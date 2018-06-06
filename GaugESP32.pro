@@ -1,4 +1,4 @@
-update=2018. ápr. 24., kedd, 15:13:18 CEST
+update=2018. 06. 04. 10:24:24
 version=1
 last_client=kicad
 [pcbnew]
@@ -25,9 +25,19 @@ version=1
 NetIExt=net
 [general]
 version=1
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60
 [eeschema]
 version=1
-LibDir=
+LibDir=../libraries/ESP32PICO
 [eeschema/libraries]
 LibName1=GaugESP32-rescue
 LibName2=power
@@ -63,3 +73,5 @@ LibName31=ftdi
 LibName32=battery_management
 LibName33=bq27441-g1
 LibName34=lm3940
+LibName35=C:/Users/Norbi/Documents/Projects/kicad/libraries/ESP/library/z_esp32
+LibName36=esp32pico_d4
