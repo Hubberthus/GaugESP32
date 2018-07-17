@@ -42,8 +42,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "GaugESP32"
-Date "2018-06-04"
-Rev "v2"
+Date "2018-07-17"
+Rev "v3"
 Comp ""
 Comment1 "   https://creativecommons.org/licenses/by-sa/4.0/"
 Comment2 "Attribution Share-Alike 4.0 License"
@@ -1574,6 +1574,378 @@ F 3 "" H 4850 6200 50  0000 C CNN
 $EndComp
 Text GLabel 10500 5450 2    39   Input ~ 0
 TS
+Text Notes 8000 3800 0    67   ~ 13
+BQ24075 Battery Charger
+Text Notes 6550 4200 0    51   ~ 0
+I2C line
+Text Notes 8650 6400 0    39   ~ 0
+TMR otional timer\nresistor:\n18k - 72k\nLeave unconnected\nto set default.\nConnect to GND\nto disable.
+$Comp
+L Conn_01x02 J3
+U 1 1 5AE56551
+P 8750 3200
+F 0 "J3" H 8750 3300 50  0000 C CNN
+F 1 "JST-PH" H 8750 3000 50  0000 C CNN
+F 2 "Connectors_JST:JST_PH_S2B-PH-K_02x2.00mm_Angled" H 8750 3200 50  0001 C CNN
+F 3 "" H 8750 3200 50  0001 C CNN
+	1    8750 3200
+	-1   0    0    -1  
+$EndComp
+Text GLabel 9300 3200 2    39   Input ~ 0
+VBATT-RAW
+$Comp
+L GND #PWR041
+U 1 1 5AE57727
+P 9200 3400
+F 0 "#PWR041" H 9200 3150 50  0001 C CNN
+F 1 "GND" H 9200 3250 50  0000 C CNN
+F 2 "" H 9200 3400 50  0000 C CNN
+F 3 "" H 9200 3400 50  0000 C CNN
+	1    9200 3400
+	1    0    0    -1  
+$EndComp
+Text Notes 9300 3950 0    51   ~ 0
+Power (default) or "Good IN" LED
+Text Notes 9900 6350 0    39   ~ 0
+Charge current ISET is driven by\nFTDI:\n- Both PWREN and BCD are HIGH: ~~100mA\n- Only PWREN is HIGH: ~~500mA\n- Both PWREN and BCD are LOW: ~~1.5A
+NoConn ~ 4750 5750
+$Comp
+L BC847 Q2
+U 1 1 5AE6DACD
+P 8350 5700
+F 0 "Q2" H 8550 5775 50  0000 L CNN
+F 1 "BC847" H 8550 5700 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 8550 5625 50  0001 L CIN
+F 3 "" H 8350 5700 50  0001 L CNN
+	1    8350 5700
+	0    1    1    0   
+$EndComp
+Text Notes 7950 4750 0    39   ~ 0
+SLEEP signal from\nFTDI can shut down\nthe system if\nUSB is put into\nsuspend.
+$Comp
+L Conn_02x02_Counter_Clockwise J4
+U 1 1 5ADF070B
+P 10450 3200
+F 0 "J4" H 10500 3300 50  0000 C CNN
+F 1 "Conn_02x02_Counter_Clockwise" H 10500 3000 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x02_Pitch2.54mm" H 10450 3200 50  0001 C CNN
+F 3 "" H 10450 3200 50  0001 C CNN
+	1    10450 3200
+	1    0    0    -1  
+$EndComp
+Text GLabel 10050 3200 0    39   Input ~ 0
+TMR
+$Comp
+L GND #PWR042
+U 1 1 5ADF1E65
+P 10050 3400
+F 0 "#PWR042" H 10050 3150 50  0001 C CNN
+F 1 "GND" H 10050 3250 50  0000 C CNN
+F 2 "" H 10050 3400 50  0000 C CNN
+F 3 "" H 10050 3400 50  0000 C CNN
+	1    10050 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR043
+U 1 1 5ADF1F12
+P 10950 3400
+F 0 "#PWR043" H 10950 3150 50  0001 C CNN
+F 1 "GND" H 10950 3250 50  0000 C CNN
+F 2 "" H 10950 3400 50  0000 C CNN
+F 3 "" H 10950 3400 50  0000 C CNN
+	1    10950 3400
+	1    0    0    -1  
+$EndComp
+Text GLabel 10950 3200 2    39   Input ~ 0
+TS
+Text GLabel 9250 5800 3    39   Input ~ 0
+TMR
+$Comp
+L GS2 SJ3
+U 1 1 5ADF4AFF
+P 10350 5350
+F 0 "SJ3" V 10450 5350 50  0000 C CNN
+F 1 "GS2" H 10450 5201 50  0001 C CNN
+F 2 "Connectors:GS2" V 10424 5350 50  0001 C CNN
+F 3 "" H 10350 5350 50  0001 C CNN
+	1    10350 5350
+	0    -1   -1   0   
+$EndComp
+Text Notes 10100 5200 0    39   ~ 0
+Cut SJ3 if external 10k thermistor\nis used.
+Text GLabel 5100 2900 0    39   Input ~ 0
+IO32
+Text GLabel 5850 2900 2    39   Input ~ 0
+IO33
+$Comp
+L C C11
+U 1 1 5AE04BFF
+P 5250 3150
+F 0 "C11" H 5275 3250 50  0000 L CNN
+F 1 "15pF" H 5275 3050 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 5288 3000 50  0001 C CNN
+F 3 "" H 5250 3150 50  0001 C CNN
+	1    5250 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C12
+U 1 1 5AE052DC
+P 5700 3150
+F 0 "C12" H 5725 3250 50  0000 L CNN
+F 1 "15pF" H 5725 3050 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 5738 3000 50  0001 C CNN
+F 3 "" H 5700 3150 50  0001 C CNN
+	1    5700 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR044
+U 1 1 5AE055EB
+P 5250 3400
+F 0 "#PWR044" H 5250 3150 50  0001 C CNN
+F 1 "GND" H 5250 3250 50  0000 C CNN
+F 2 "" H 5250 3400 50  0000 C CNN
+F 3 "" H 5250 3400 50  0000 C CNN
+	1    5250 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR045
+U 1 1 5AE0569E
+P 5700 3400
+F 0 "#PWR045" H 5700 3150 50  0001 C CNN
+F 1 "GND" H 5700 3250 50  0000 C CNN
+F 2 "" H 5700 3400 50  0000 C CNN
+F 3 "" H 5700 3400 50  0000 C CNN
+	1    5700 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Crystal_Small Y1
+U 1 1 5AE05DA3
+P 5500 2900
+F 0 "Y1" H 5500 3000 50  0000 C CNN
+F 1 "32.768kHz" H 5500 2800 50  0000 C CNN
+F 2 "Crystals:Crystal_SMD_3215-2pin_3.2x1.5mm" H 5500 2900 50  0001 C CNN
+F 3 "" H 5500 2900 50  0001 C CNN
+	1    5500 2900
+	-1   0    0    1   
+$EndComp
+Text Notes 4900 2700 0    67   ~ 13
+32.768kHz RTC Crystal
+NoConn ~ 800  5250
+$Comp
+L ESP32PICO_D4 U1
+U 1 1 5B150407
+P 1550 2950
+F 0 "U1" H 2350 3650 60  0000 C CNN
+F 1 "ESP32PICO_D4" H 2550 3750 60  0000 C CNB
+F 2 "ESP32PICO:ESP32_PICO_D4" H 1550 2950 60  0001 C CNN
+F 3 "" H 1550 2950 60  0001 C CNN
+	1    1550 2950
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3450 1900
+NoConn ~ 3450 2000
+NoConn ~ 3450 2100
+NoConn ~ 3450 2200
+NoConn ~ 3450 2300
+NoConn ~ 3450 2400
+NoConn ~ 3450 2600
+NoConn ~ 1900 1150
+NoConn ~ 2000 1150
+NoConn ~ 2200 1150
+NoConn ~ 2300 1150
+Text GLabel 1150 2100 0    39   Input ~ 0
+IO37
+Text GLabel 1150 2200 0    39   Input ~ 0
+IO38
+$Comp
+L +3.3VA #PWR046
+U 1 1 5B156914
+P 1250 900
+F 0 "#PWR046" H 1250 750 50  0001 C CNN
+F 1 "+3.3VA" H 1250 1040 50  0000 C CNN
+F 2 "" H 1250 900 50  0001 C CNN
+F 3 "" H 1250 900 50  0001 C CNN
+	1    1250 900 
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3VA #PWR047
+U 1 1 5B157CF1
+P 3250 900
+F 0 "#PWR047" H 3250 750 50  0001 C CNN
+F 1 "+3.3VA" H 3250 1040 50  0000 C CNN
+F 2 "" H 3250 900 50  0001 C CNN
+F 3 "" H 3250 900 50  0001 C CNN
+	1    3250 900 
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3VA #PWR048
+U 1 1 5B159E38
+P 3500 3100
+F 0 "#PWR048" H 3500 2950 50  0001 C CNN
+F 1 "+3.3VA" H 3500 3240 50  0000 C CNN
+F 2 "" H 3500 3100 50  0001 C CNN
+F 3 "" H 3500 3100 50  0001 C CNN
+	1    3500 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C13
+U 1 1 5B15F2D9
+P 4500 2950
+F 0 "C13" H 4525 3050 50  0000 L CNN
+F 1 "0.1uF" H 4525 2850 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 4538 2800 50  0001 C CNN
+F 3 "" H 4500 2950 50  0001 C CNN
+	1    4500 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR049
+U 1 1 5B15F607
+P 4500 3200
+F 0 "#PWR049" H 4500 2950 50  0001 C CNN
+F 1 "GND" H 4500 3050 50  0000 C CNN
+F 2 "" H 4500 3200 50  0000 C CNN
+F 3 "" H 4500 3200 50  0000 C CNN
+	1    4500 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C14
+U 1 1 5B161C5C
+P 650 1300
+F 0 "C14" H 675 1400 50  0000 L CNN
+F 1 "10uF" H 675 1200 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 688 1150 50  0001 C CNN
+F 3 "" H 650 1300 50  0001 C CNN
+	1    650  1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C15
+U 1 1 5B161EB1
+P 1000 1300
+F 0 "C15" H 1025 1400 50  0000 L CNN
+F 1 "0.1uF" H 1025 1200 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 1038 1150 50  0001 C CNN
+F 3 "" H 1000 1300 50  0001 C CNN
+	1    1000 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR050
+U 1 1 5B162316
+P 650 1550
+F 0 "#PWR050" H 650 1300 50  0001 C CNN
+F 1 "GND" H 650 1400 50  0000 C CNN
+F 2 "" H 650 1550 50  0000 C CNN
+F 3 "" H 650 1550 50  0000 C CNN
+	1    650  1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L L L2
+U 1 1 5B163D28
+P 1200 3150
+F 0 "L2" V 1150 3150 50  0000 C CNN
+F 1 "1.6nH" V 1275 3150 50  0000 C CNN
+F 2 "Inductors_SMD:L_0603" H 1200 3150 50  0001 C CNN
+F 3 "" H 1200 3150 50  0001 C CNN
+	1    1200 3150
+	-1   0    0    1   
+$EndComp
+Text GLabel 1150 1700 0    39   Input ~ 0
+LNA
+Text GLabel 1300 2950 2    39   Input ~ 0
+LNA
+$Comp
+L GND #PWR051
+U 1 1 5B164D94
+P 1200 3350
+F 0 "#PWR051" H 1200 3100 50  0001 C CNN
+F 1 "GND" H 1200 3200 50  0000 C CNN
+F 2 "" H 1200 3350 50  0000 C CNN
+F 3 "" H 1200 3350 50  0000 C CNN
+	1    1200 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C16
+U 1 1 5B165009
+P 950 2950
+F 0 "C16" H 975 3050 50  0000 L CNN
+F 1 "4.7pF" H 975 2850 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 988 2800 50  0001 C CNN
+F 3 "" H 950 2950 50  0001 C CNN
+	1    950  2950
+	0    1    1    0   
+$EndComp
+$Comp
+L C C17
+U 1 1 5B165502
+P 650 3150
+F 0 "C17" H 675 3250 50  0000 L CNN
+F 1 "2.7pF" H 675 3050 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 688 3000 50  0001 C CNN
+F 3 "" H 650 3150 50  0001 C CNN
+	1    650  3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR052
+U 1 1 5B1655FB
+P 650 3350
+F 0 "#PWR052" H 650 3100 50  0001 C CNN
+F 1 "GND" H 650 3200 50  0000 C CNN
+F 2 "" H 650 3350 50  0000 C CNN
+F 3 "" H 650 3350 50  0000 C CNN
+	1    650  3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Antenna_Shield AE1
+U 1 1 5B165FA0
+P 650 2450
+F 0 "AE1" H 700 2700 50  0000 R CNN
+F 1 "Antenna_Shield" V 800 2850 50  0000 R CNN
+F 2 "RF_Antennas:Texas_SWRA117D_2.4GHz_Left" H 650 2550 50  0001 C CNN
+F 3 "" H 650 2550 50  0001 C CNN
+	1    650  2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR053
+U 1 1 5B1662F8
+P 750 2700
+F 0 "#PWR053" H 750 2450 50  0001 C CNN
+F 1 "GND" H 750 2550 50  0000 C CNN
+F 2 "" H 750 2700 50  0000 C CNN
+F 3 "" H 750 2700 50  0000 C CNN
+	1    750  2700
+	1    0    0    -1  
+$EndComp
+Text GLabel 9200 950  2    39   Input ~ 0
+IO37
+Text GLabel 9200 1050 2    39   Input ~ 0
+IO38
+$Comp
+L GS3 SJ1
+U 1 1 5ADC3196
+P 10700 3950
+F 0 "SJ1" H 10750 4150 50  0000 C CNN
+F 1 "GS3" H 10750 3751 50  0001 C CNN
+F 2 "Connectors:GS3" V 10788 3876 50  0001 C CNN
+F 3 "" H 10700 3950 50  0001 C CNN
+	1    10700 3950
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
 	4850 1050 4850 1150
 Wire Wire Line
@@ -2016,101 +2388,16 @@ Wire Wire Line
 Connection ~ 4850 5650
 Wire Wire Line
 	4850 6200 4850 6150
-Text Notes 8000 3800 0    67   ~ 13
-BQ24075 Battery Charger
-Text Notes 6550 4200 0    51   ~ 0
-I2C line
-Text Notes 8650 6400 0    39   ~ 0
-TMR otional timer\nresistor:\n18k - 72k\nLeave unconnected\nto set default.\nConnect to GND\nto disable.
-$Comp
-L Conn_01x02 J3
-U 1 1 5AE56551
-P 8750 3200
-F 0 "J3" H 8750 3300 50  0000 C CNN
-F 1 "JST-PH" H 8750 3000 50  0000 C CNN
-F 2 "Connectors_JST:JST_PH_S2B-PH-K_02x2.00mm_Angled" H 8750 3200 50  0001 C CNN
-F 3 "" H 8750 3200 50  0001 C CNN
-	1    8750 3200
-	-1   0    0    -1  
-$EndComp
-Text GLabel 9300 3200 2    39   Input ~ 0
-VBATT-RAW
-$Comp
-L GND #PWR041
-U 1 1 5AE57727
-P 9200 3400
-F 0 "#PWR041" H 9200 3150 50  0001 C CNN
-F 1 "GND" H 9200 3250 50  0000 C CNN
-F 2 "" H 9200 3400 50  0000 C CNN
-F 3 "" H 9200 3400 50  0000 C CNN
-	1    9200 3400
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8950 3200 9300 3200
 Wire Wire Line
 	8950 3300 9200 3300
 Wire Wire Line
 	9200 3300 9200 3400
-Text Notes 9300 3950 0    51   ~ 0
-Power (default) or "Good IN" LED
-Text Notes 9900 6350 0    39   ~ 0
-Charge current ISET is driven by\nFTDI:\n- Both PWREN and BCD are HIGH: ~~100mA\n- Only PWREN is HIGH: ~~500mA\n- Both PWREN and BCD are LOW: ~~1.5A
-NoConn ~ 4750 5750
-$Comp
-L BC847 Q2
-U 1 1 5AE6DACD
-P 8350 5700
-F 0 "Q2" H 8550 5775 50  0000 L CNN
-F 1 "BC847" H 8550 5700 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23" H 8550 5625 50  0001 L CIN
-F 3 "" H 8350 5700 50  0001 L CNN
-	1    8350 5700
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	8900 5800 9150 5800
 Wire Wire Line
 	8600 5800 8550 5800
-Text Notes 7950 4750 0    39   ~ 0
-SLEEP signal from\nFTDI can shut down\nthe system if\nUSB is put into\nsuspend.
-$Comp
-L Conn_02x02_Counter_Clockwise J4
-U 1 1 5ADF070B
-P 10450 3200
-F 0 "J4" H 10500 3300 50  0000 C CNN
-F 1 "Conn_02x02_Counter_Clockwise" H 10500 3000 50  0001 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_2x02_Pitch2.54mm" H 10450 3200 50  0001 C CNN
-F 3 "" H 10450 3200 50  0001 C CNN
-	1    10450 3200
-	1    0    0    -1  
-$EndComp
-Text GLabel 10050 3200 0    39   Input ~ 0
-TMR
-$Comp
-L GND #PWR042
-U 1 1 5ADF1E65
-P 10050 3400
-F 0 "#PWR042" H 10050 3150 50  0001 C CNN
-F 1 "GND" H 10050 3250 50  0000 C CNN
-F 2 "" H 10050 3400 50  0000 C CNN
-F 3 "" H 10050 3400 50  0000 C CNN
-	1    10050 3400
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR043
-U 1 1 5ADF1F12
-P 10950 3400
-F 0 "#PWR043" H 10950 3150 50  0001 C CNN
-F 1 "GND" H 10950 3250 50  0000 C CNN
-F 2 "" H 10950 3400 50  0000 C CNN
-F 3 "" H 10950 3400 50  0000 C CNN
-	1    10950 3400
-	1    0    0    -1  
-$EndComp
-Text GLabel 10950 3200 2    39   Input ~ 0
-TS
 Wire Wire Line
 	10050 3200 10250 3200
 Wire Wire Line
@@ -2123,19 +2410,6 @@ Wire Wire Line
 	10950 3300 10950 3400
 Wire Wire Line
 	10750 3200 10950 3200
-Text GLabel 9250 5800 3    39   Input ~ 0
-TMR
-$Comp
-L GS2 SJ3
-U 1 1 5ADF4AFF
-P 10350 5350
-F 0 "SJ3" V 10450 5350 50  0000 C CNN
-F 1 "GS2" H 10450 5201 50  0001 C CNN
-F 2 "Connectors:GS2" V 10424 5350 50  0001 C CNN
-F 3 "" H 10350 5350 50  0001 C CNN
-	1    10350 5350
-	0    -1   -1   0   
-$EndComp
 Connection ~ 10550 5350
 Connection ~ 10150 5350
 Wire Wire Line
@@ -2148,71 +2422,10 @@ Wire Wire Line
 Wire Wire Line
 	10050 5450 10500 5450
 Connection ~ 10050 5350
-Text Notes 10100 5200 0    39   ~ 0
-Cut SJ3 if external 10k thermistor\nis used.
-Text GLabel 5100 2900 0    39   Input ~ 0
-IO32
-Text GLabel 5850 2900 2    39   Input ~ 0
-IO33
-$Comp
-L C C11
-U 1 1 5AE04BFF
-P 5250 3150
-F 0 "C11" H 5275 3250 50  0000 L CNN
-F 1 "15pF" H 5275 3050 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603" H 5288 3000 50  0001 C CNN
-F 3 "" H 5250 3150 50  0001 C CNN
-	1    5250 3150
-	1    0    0    -1  
-$EndComp
-$Comp
-L C C12
-U 1 1 5AE052DC
-P 5700 3150
-F 0 "C12" H 5725 3250 50  0000 L CNN
-F 1 "15pF" H 5725 3050 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603" H 5738 3000 50  0001 C CNN
-F 3 "" H 5700 3150 50  0001 C CNN
-	1    5700 3150
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR044
-U 1 1 5AE055EB
-P 5250 3400
-F 0 "#PWR044" H 5250 3150 50  0001 C CNN
-F 1 "GND" H 5250 3250 50  0000 C CNN
-F 2 "" H 5250 3400 50  0000 C CNN
-F 3 "" H 5250 3400 50  0000 C CNN
-	1    5250 3400
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR045
-U 1 1 5AE0569E
-P 5700 3400
-F 0 "#PWR045" H 5700 3150 50  0001 C CNN
-F 1 "GND" H 5700 3250 50  0000 C CNN
-F 2 "" H 5700 3400 50  0000 C CNN
-F 3 "" H 5700 3400 50  0000 C CNN
-	1    5700 3400
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5250 3300 5250 3400
 Wire Wire Line
 	5700 3300 5700 3400
-$Comp
-L Crystal_Small Y1
-U 1 1 5AE05DA3
-P 5500 2900
-F 0 "Y1" H 5500 3000 50  0000 C CNN
-F 1 "32.768kHz" H 5500 2800 50  0000 C CNN
-F 2 "Crystals:Crystal_SMD_3215-2pin_3.2x1.5mm" H 5500 2900 50  0001 C CNN
-F 3 "" H 5500 2900 50  0001 C CNN
-	1    5500 2900
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	5100 2900 5400 2900
 Wire Wire Line
@@ -2227,39 +2440,10 @@ Wire Notes Line
 	6200 2550 4800 2550
 Wire Notes Line
 	4800 2550 4800 3600
-Text Notes 4900 2700 0    67   ~ 13
-32.768kHz RTC Crystal
-NoConn ~ 800  5250
-$Comp
-L ESP32PICO_D4 U1
-U 1 1 5B150407
-P 1550 2950
-F 0 "U1" H 2350 3650 60  0000 C CNN
-F 1 "ESP32PICO_D4" H 2550 3750 60  0000 C CNB
-F 2 "ESP32PICO:ESP32_PICO_D4" H 1550 2950 60  0001 C CNN
-F 3 "" H 1550 2950 60  0001 C CNN
-	1    1550 2950
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	1600 900  1600 1150
-NoConn ~ 3450 1900
-NoConn ~ 3450 2000
-NoConn ~ 3450 2100
-NoConn ~ 3450 2200
-NoConn ~ 3450 2300
-NoConn ~ 3450 2400
-NoConn ~ 3450 2600
-NoConn ~ 1900 1150
-NoConn ~ 2000 1150
-NoConn ~ 2200 1150
-NoConn ~ 2300 1150
 Wire Wire Line
 	1150 2000 1350 2000
-Text GLabel 1150 2100 0    39   Input ~ 0
-IO37
-Text GLabel 1150 2200 0    39   Input ~ 0
-IO38
 Wire Wire Line
 	1150 2100 1350 2100
 Wire Wire Line
@@ -2280,17 +2464,6 @@ Wire Wire Line
 	1250 900  1250 1900
 Wire Wire Line
 	1250 1600 1350 1600
-$Comp
-L +3.3VA #PWR046
-U 1 1 5B156914
-P 1250 900
-F 0 "#PWR046" H 1250 750 50  0001 C CNN
-F 1 "+3.3VA" H 1250 1040 50  0000 C CNN
-F 2 "" H 1250 900 50  0001 C CNN
-F 3 "" H 1250 900 50  0001 C CNN
-	1    1250 900 
-	1    0    0    -1  
-$EndComp
 Connection ~ 1250 1000
 Wire Wire Line
 	650  900  650  1150
@@ -2310,17 +2483,6 @@ Wire Wire Line
 	2800 1000 2800 1150
 Wire Wire Line
 	2900 1000 2900 1150
-$Comp
-L +3.3VA #PWR047
-U 1 1 5B157CF1
-P 3250 900
-F 0 "#PWR047" H 3250 750 50  0001 C CNN
-F 1 "+3.3VA" H 3250 1040 50  0000 C CNN
-F 2 "" H 3250 900 50  0001 C CNN
-F 3 "" H 3250 900 50  0001 C CNN
-	1    3250 900 
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	3250 1100 3250 900 
 Wire Wire Line
@@ -2365,84 +2527,18 @@ Wire Wire Line
 	2000 3350 2000 3150
 Wire Wire Line
 	1900 3350 1900 3150
-$Comp
-L +3.3VA #PWR048
-U 1 1 5B159E38
-P 3500 3100
-F 0 "#PWR048" H 3500 2950 50  0001 C CNN
-F 1 "+3.3VA" H 3500 3240 50  0000 C CNN
-F 2 "" H 3500 3100 50  0001 C CNN
-F 3 "" H 3500 3100 50  0001 C CNN
-	1    3500 3100
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	3500 3100 3500 3250
 Wire Wire Line
 	3500 3250 2500 3250
 Wire Wire Line
 	2500 3250 2500 3150
-$Comp
-L C C13
-U 1 1 5B15F2D9
-P 4500 2950
-F 0 "C13" H 4525 3050 50  0000 L CNN
-F 1 "0.1uF" H 4525 2850 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603" H 4538 2800 50  0001 C CNN
-F 3 "" H 4500 2950 50  0001 C CNN
-	1    4500 2950
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR049
-U 1 1 5B15F607
-P 4500 3200
-F 0 "#PWR049" H 4500 2950 50  0001 C CNN
-F 1 "GND" H 4500 3050 50  0000 C CNN
-F 2 "" H 4500 3200 50  0000 C CNN
-F 3 "" H 4500 3200 50  0000 C CNN
-	1    4500 3200
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4700 2650 4500 2650
 Wire Wire Line
 	4500 2650 4500 2800
 Wire Wire Line
 	4500 3100 4500 3200
-$Comp
-L C C14
-U 1 1 5B161C5C
-P 650 1300
-F 0 "C14" H 675 1400 50  0000 L CNN
-F 1 "10uF" H 675 1200 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603" H 688 1150 50  0001 C CNN
-F 3 "" H 650 1300 50  0001 C CNN
-	1    650  1300
-	1    0    0    -1  
-$EndComp
-$Comp
-L C C15
-U 1 1 5B161EB1
-P 1000 1300
-F 0 "C15" H 1025 1400 50  0000 L CNN
-F 1 "0.1uF" H 1025 1200 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603" H 1038 1150 50  0001 C CNN
-F 3 "" H 1000 1300 50  0001 C CNN
-	1    1000 1300
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR050
-U 1 1 5B162316
-P 650 1550
-F 0 "#PWR050" H 650 1300 50  0001 C CNN
-F 1 "GND" H 650 1400 50  0000 C CNN
-F 2 "" H 650 1550 50  0000 C CNN
-F 3 "" H 650 1550 50  0000 C CNN
-	1    650  1550
-	1    0    0    -1  
-$EndComp
 Connection ~ 650  1000
 Wire Wire Line
 	1000 1000 1000 1150
@@ -2454,67 +2550,8 @@ Wire Wire Line
 Wire Wire Line
 	1000 1500 650  1500
 Connection ~ 650  1500
-$Comp
-L L L2
-U 1 1 5B163D28
-P 1200 3150
-F 0 "L2" V 1150 3150 50  0000 C CNN
-F 1 "1.6nH" V 1275 3150 50  0000 C CNN
-F 2 "Inductors_SMD:L_0603" H 1200 3150 50  0001 C CNN
-F 3 "" H 1200 3150 50  0001 C CNN
-	1    1200 3150
-	-1   0    0    1   
-$EndComp
-Text GLabel 1150 1700 0    39   Input ~ 0
-LNA
 Wire Wire Line
 	1150 1700 1350 1700
-Text GLabel 1300 2950 2    39   Input ~ 0
-LNA
-$Comp
-L GND #PWR051
-U 1 1 5B164D94
-P 1200 3350
-F 0 "#PWR051" H 1200 3100 50  0001 C CNN
-F 1 "GND" H 1200 3200 50  0000 C CNN
-F 2 "" H 1200 3350 50  0000 C CNN
-F 3 "" H 1200 3350 50  0000 C CNN
-	1    1200 3350
-	1    0    0    -1  
-$EndComp
-$Comp
-L C C16
-U 1 1 5B165009
-P 950 2950
-F 0 "C16" H 975 3050 50  0000 L CNN
-F 1 "4.7pF" H 975 2850 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603" H 988 2800 50  0001 C CNN
-F 3 "" H 950 2950 50  0001 C CNN
-	1    950  2950
-	0    1    1    0   
-$EndComp
-$Comp
-L C C17
-U 1 1 5B165502
-P 650 3150
-F 0 "C17" H 675 3250 50  0000 L CNN
-F 1 "2.7pF" H 675 3050 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603" H 688 3000 50  0001 C CNN
-F 3 "" H 650 3150 50  0001 C CNN
-	1    650  3150
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR052
-U 1 1 5B1655FB
-P 650 3350
-F 0 "#PWR052" H 650 3100 50  0001 C CNN
-F 1 "GND" H 650 3200 50  0000 C CNN
-F 2 "" H 650 3350 50  0000 C CNN
-F 3 "" H 650 3350 50  0000 C CNN
-	1    650  3350
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	1300 2950 1100 2950
 Wire Wire Line
@@ -2528,62 +2565,19 @@ Wire Wire Line
 	800  2950 650  2950
 Wire Wire Line
 	650  2650 650  3000
-$Comp
-L Antenna_Shield AE1
-U 1 1 5B165FA0
-P 650 2450
-F 0 "AE1" H 700 2700 50  0000 R CNN
-F 1 "Antenna_Shield" V 800 2850 50  0000 R CNN
-F 2 "RF_Antennas:Texas_SWRA117D_2.4GHz_Left" H 650 2550 50  0001 C CNN
-F 3 "" H 650 2550 50  0001 C CNN
-	1    650  2450
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR053
-U 1 1 5B1662F8
-P 750 2700
-F 0 "#PWR053" H 750 2450 50  0001 C CNN
-F 1 "GND" H 750 2550 50  0000 C CNN
-F 2 "" H 750 2700 50  0000 C CNN
-F 3 "" H 750 2700 50  0000 C CNN
-	1    750  2700
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	750  2650 750  2700
 Connection ~ 650  2950
-Text GLabel 9200 950  2    39   Input ~ 0
-IO37
-Text GLabel 9200 1050 2    39   Input ~ 0
-IO38
 Wire Wire Line
 	8950 950  9200 950 
 Wire Wire Line
 	8950 1050 9200 1050
-$Comp
-L GS3 SJ1
-U 1 1 5ADC3196
-P 10700 3950
-F 0 "SJ1" H 10750 4150 50  0000 C CNN
-F 1 "GS3" H 10750 3751 50  0001 C CNN
-F 2 "Connectors:GS3" V 10788 3876 50  0001 C CNN
-F 3 "" H 10700 3950 50  0001 C CNN
-	1    10700 3950
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
-	10850 3950 11000 3950
+	10700 3950 11000 3950
 Wire Wire Line
-	10400 4050 10550 4050
-Wire Notes Line
-	10700 4050 10700 3950
+	10400 4050 10700 4050
 Wire Wire Line
-	6150 4050 6150 4150
-Wire Wire Line
-	6150 4650 6150 4550
-Wire Notes Line
-	6150 4400 6150 4300
+	6150 4050 6150 4650
 Wire Wire Line
 	6150 5650 6050 5650
 Connection ~ 6050 5750
@@ -2592,4 +2586,10 @@ Wire Wire Line
 Wire Wire Line
 	3550 7400 3450 7400
 Connection ~ 3450 7400
+Wire Wire Line
+	10700 4050 10700 3950
+Connection ~ 10550 4050
+Connection ~ 10850 3950
+Connection ~ 6150 4550
+Connection ~ 6150 4150
 $EndSCHEMATC
